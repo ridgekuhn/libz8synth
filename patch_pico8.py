@@ -44,6 +44,9 @@ oscillators = [
 #######
 p = Patcherex(args.p8path)
 
+p.patches.append(InsertFunctionPatch("polyblep", Path(
+	"./src/binary/filters/polyblep.c").read_text()))
+
 for o in oscillators:
 	p.patches.append(InsertFunctionPatch(o[0], Path(o[1]).read_text()))
 
