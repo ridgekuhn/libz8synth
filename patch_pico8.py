@@ -27,7 +27,7 @@ os.makedirs("./out", exist_ok=True)
 
 oscillators = [
 	["mix_organ", "./src/binary/oscillators/aliased/mix_organ.c"],
-	["mix_pulse", "./src/binary/oscillators/aliased/mix_pulse.c"],
+	["mix_pulse", "./src/binary/oscillators/polyblepped/mix_pulse.c"],
 	["mix_sawtooth", "./src/binary/oscillators/aliased/mix_sawtooth.c"],
 	["mix_supersaw", "./src/binary/oscillators/aliased/mix_supersaw.c"],
 	["mix_triangle", "./src/binary/oscillators/aliased/mix_triangle.c"],
