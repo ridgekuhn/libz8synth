@@ -6,6 +6,7 @@
  */
 _Bool advanced_pattern = 0;
 int8_t codo_audio_buffer[0x55f00];
+int codo_audio_is_locked = 0;
 
 int codo_state[172] = {
     // is_paused

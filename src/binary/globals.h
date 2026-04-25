@@ -13,6 +13,10 @@ extern _Bool advanced_pattern;
 extern int8_t codo_audio_buffer[0x55f00];
 #endif
 
+#ifndef codo_audio_is_locked
+extern int codo_audio_is_locked;
+#endif
+
 #ifndef codo_state
 extern int codo_state[172];
 #endif
