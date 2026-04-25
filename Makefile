@@ -21,6 +21,19 @@ $(OUT)/globals.o: $(SRC)/globals.h
 
 globals: $(OUT)/globals.o out_dir
 
+#######
+# Audio
+#######
+AUDIO_OBJ=$(patsubst $(SRC)/audio/%.c,$(OUT)/audio/%.o,$(wildcard $(SRC)/audio/*.c))
+
+audio_dir:
+	mkdir -p $(OUT)/audio
+
+$(AUDIO_OBJ): $(OUT)/audio/%.o : $(SRC)/audio/%.c $(SRC)/audio/%.h audio_dir globals
+	$(CC) $(CFLAGS) -o $@ -c $<
+
+audio: $(AUDIO_OBJ)
+
 ######
 # Cart
 ######
@@ -132,7 +145,7 @@ synth_dir:
 
 SYNTH_OBJ=$(patsubst $(SRC)/$(SYNTH_DIR)/%.c,$(OUT)/$(SYNTH_DIR)/%.o,$(wildcard $(SRC)/$(SYNTH_DIR)/*.c))
 
-$(SYNTH_OBJ): $(OUT)/$(SYNTH_DIR)/%.o : $(SRC)/$(SYNTH_DIR)/%.c $(SRC)/$(SYNTH_DIR)/%.h synth_dir globals memory oscillators time
+$(SYNTH_OBJ): $(OUT)/$(SYNTH_DIR)/%.o : $(SRC)/$(SYNTH_DIR)/%.c $(SRC)/$(SYNTH_DIR)/%.h synth_dir globals audio memory oscillators time
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 synth: $(SYNTH_OBJ)
