@@ -1,5 +1,5 @@
 import argparse
-from patcherex2 import InsertFunctionPatch, ModifyFunctionPatch, Patcherex
+from patcherex2 import InsertDataPatch, InsertFunctionPatch, ModifyFunctionPatch, Patcherex
 from pathlib import Path
 import os
 import re
@@ -64,13 +64,6 @@ hq_oscillators = [
 #######
 patcher = Patcherex(args.p8path)
 
-patcher.patches.append(InsertFunctionPatch(
-	"mix_reverb",
-	Path("./src/binary/audio/synth/mix_reverb.c").read_text(),
-	compile_opts={"extra_compiler_flags": [
-		"-I", os.path.dirname(os.path.realpath(__file__)) + "/src/binary/audio/synth", "-v"]}
-))
-
 # patcher.patches.append(InsertFunctionPatch(
 # 	"polyblep",
 # 	Path("./src/binary/audio/synth/filters/polyblep.c").read_text(),
@@ -106,10 +99,13 @@ for oscillator in hq_oscillators:
 	))
 
 patcher.patches.append(InsertFunctionPatch(
-    "mix_reverb",
-   	Path("./src/binary/audio/synth/mix_reverb.c").read_text(),
-   	compile_opts={"extra_compiler_flags": [
-            "-I", os.path.dirname(os.path.realpath(__file__)) + "/src/binary/audio/synth", "-v"]}
+	"mix_reverb",
+	Path("./src/binary/audio/synth/mix_reverb.c").read_text(),
+	compile_opts={"extra_compiler_flags": [
+		"-I", os.path.dirname(os.path.realpath(__file__)) +
+            "/src/binary/audio/synth",
+		"-v"
+	]}
 ))
 
 patcher.patches.append(ModifyFunctionPatch(
