@@ -31,10 +31,15 @@ int codo_state[172] = {
     [672 >> 2] = 0,
 };
 
+int fade1 = 0;
+int fade_len = 0;
+int fade_start_t = 0;
+int fade_vol = 0;
 _Bool inside_codo_mixer_callback = 0;
 int last_callback_len = 0;
 int m_high = 0x1234567;
 int m_low = 0xdeadbeef;
+int music_playing = 0;
 int8_t ms0[0x37000];
 
 /*

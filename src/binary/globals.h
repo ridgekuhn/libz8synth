@@ -21,6 +21,26 @@ extern int codo_audio_is_locked;
 extern int codo_state[172];
 #endif
 
+#ifndef fade0
+extern int fade0;
+#endif
+
+#ifndef fade1
+extern int fade1;
+#endif
+
+#ifndef fade_len
+extern int fade_len;
+#endif
+
+#ifndef fade_start_t
+extern int fade_start_t;
+#endif
+
+#ifndef fade_vol
+extern int fade_vol;
+#endif
+
 #ifndef inside_codo_mixer_callback
 extern _Bool inside_codo_mixer_callback;
 #endif
@@ -41,10 +61,6 @@ extern int m_high;
 extern int8_t ms0[0x37000];
 #endif
 
-#ifndef fade_vol
-extern int fade_vol;
-#endif
-
 /*
  * Custom globals
  */
@@ -56,6 +72,7 @@ extern int bytes_per_tick;
 extern int global_bitcrush;
 extern int global_dampen;
 extern int global_reverb;
+extern int music_playing;
 extern int music_volume;
 extern CData *g_cdata;
 extern int g_version;
